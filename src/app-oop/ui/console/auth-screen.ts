@@ -1,19 +1,18 @@
-import { AuthService } from "../../service/auth-service.js";
+import { AuthService, UserDataType } from "../../service/auth-service";
+import { prompt } from "../../util";
 
 export class AuthScreen {
-  // 인스턴스 속성(변수)
-  private authService: AuthService;
+  private _authService: AuthService;
 
-  // 메소드(함수)
   constructor(authService: AuthService) {
-    this.authService = authService;
+    this._authService = authService;
   }
 
-  showAuthUI() {
+  showAuthUI(): string {
     return prompt("로그인(0), 회원 가입(1), 종료(q): ");
   }
 
-  showSignInUI() {
+  showSignInUI(): UserDataType | undefined {
     const inputEmail = prompt("이메일: ");
     if (inputEmail.includes("@") === false) {
       console.log("올바른 이메일 형식이 아닙니다.");
@@ -26,7 +25,7 @@ export class AuthScreen {
       return;
     }
 
-    const user = this.authService.signIn(inputEmail, inputPassword);
+    const user = this._authService.signIn(inputEmail, inputPassword);
     if (user === null) {
       console.log("이메일 또는 비밀번호가 일치하지 않습니다.\n");
       return;
@@ -58,7 +57,7 @@ export class AuthScreen {
       return;
     }
 
-    const isSignedUp = this.authService.signUp(
+    const isSignedUp = this._authService.signUp(
       inputEmail,
       inputPassword,
       inputUsername,

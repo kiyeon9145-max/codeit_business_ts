@@ -1,7 +1,7 @@
 {
   "name": "codeit-business-ts",
   "scripts": {
-    "start": "npx tsc && node ./dist/index.js",
+    "start": "npx tsc && node ./dist/app-oop/index.js",
     "format": "prettier . --write"
   },
   "dependencies": {

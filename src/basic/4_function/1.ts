@@ -1,4 +1,4 @@
-import { UserType } from "../basic/2_ref_value";
+import { UserType } from "../2_ref_value";
 
 // 함수
 function addOne(x: number): number {

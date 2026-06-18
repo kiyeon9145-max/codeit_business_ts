@@ -1,4 +1,4 @@
-import { Memo } from "../domain/memo";
+import { Memo } from "../../domain/memo";
 
 export interface IMemoRepo {
   loadMemos(): Memo[];
