@@ -29,6 +29,6 @@ x++;
 상속 체크 연산자
 */
 
-type UserType = {name: string, age: number}
+type UserType = { name: string; age: number };
 const user1 = { name: "김철수", age: 25 };
 console.log(user1.age >= 20 ? "성인" : "청소년");

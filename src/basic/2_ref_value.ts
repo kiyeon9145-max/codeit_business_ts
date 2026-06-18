@@ -8,10 +8,10 @@
  * 키와 값 목록 동시 조회: Object.entries(user1)
  */
 export type UserType = {
-  name: string,
-  age: number,
-  isMarried: boolean
-}
+  name: string;
+  age: number;
+  isMarried: boolean;
+};
 
 const user1: UserType = {
   name: "김민정",

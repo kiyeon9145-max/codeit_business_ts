@@ -4,7 +4,7 @@
 
 const numbers = [1, 2, 3, 4, 5];
 
-const forEach = (callback, arr) => {
+const forEach = (callback: (V: number) => undefined, arr: number[]) => {
   for (let i = 0; i < arr.length; i++) {
     callback(arr[i]);
   }
@@ -16,7 +16,7 @@ numbers.forEach((v) => {
   console.log(v);
 });
 
-const map = (callback, arr) => {
+const map = (callback: (V: number) => number, arr: number[]) => {
   const newArr = [];
   for (let i = 0; i < arr.length; i++) {
     newArr.push(callback(arr[i]));
@@ -26,7 +26,7 @@ const map = (callback, arr) => {
 console.log(map((v) => 2 * v, numbers));
 console.log(numbers.map((v) => v * 2));
 
-const filter = (callback, arr) => {
+const filter = (callback: (v: number) => boolean, arr: number[]) => {
   const newArr = [];
   for (let i = 0; i < arr.length; i++) {
     if (callback(arr[i]) === true) {
@@ -38,7 +38,7 @@ const filter = (callback, arr) => {
 console.log(filter((v) => (v % 2 === 0 ? true : false), numbers));
 console.log(numbers.filter((v) => (v % 2 === 0 ? true : false)));
 
-const find = (callback, arr) => {
+const find = (callback: (v: number) => boolean, arr: number[]) => {
   // 콜백에 의해서 true가 리턴되는 원소중에서 첫 번쨰 원소를 찾아서 리턴
   for (let i = 0; i < arr.length; i++) {
     if (callback(arr[i]) === true) {
@@ -49,7 +49,7 @@ const find = (callback, arr) => {
 console.log(find((v) => (v % 5 === 3 ? true : false), numbers));
 console.log(numbers.find((v) => (v % 5 === 3 ? true : false)));
 
-const findIndex = (callback, arr) => {
+const findIndex = (callback: (v: number) => boolean, arr: number[]) => {
   // 콜백에 의해서 true가 리턴되는 원소중에서 첫 번쨰 원소를 찾아서 그 인덱스를 리턴
   // 못찾으면 -1을 리턴합니다.
   for (let i = 0; i < arr.length; i++) {
@@ -63,7 +63,11 @@ const findIndex = (callback, arr) => {
 console.log(findIndex((v) => (v % 5 === 3 ? true : false), numbers));
 console.log(numbers.findIndex((v) => (v % 5 === 3 ? true : false)));
 
-const reduce = (callback, accumulator, arr) => {
+const reduce = (
+  callback: (acc: number, v: number) => number,
+  accumulator: number,
+  arr: number[],
+) => {
   for (let i = 0; i < arr.length; i++) {
     accumulator = callback(accumulator, arr[i]);
   }

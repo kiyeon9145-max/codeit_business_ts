@@ -4,12 +4,12 @@
  * 즉, outer가 실행된 후 리턴된 inner 함수는 variable에 접근할 수 있습니다.
  */
 const outer = () => {
-    const outVariable = 1;
-  
-    return () => {
-      return outVariable;
-    };
+  const outVariable = 1;
+
+  return () => {
+    return outVariable;
   };
-  const inner = outer();
-  const result = inner();
-  console.log(result);
+};
+const inner = outer();
+const result = inner();
+console.log(result);

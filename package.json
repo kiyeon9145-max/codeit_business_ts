@@ -1,11 +1,11 @@
 {
-    "name": "codeit-business-ts",
-    "scripts": {
-        "start": "npx tsc && node ./dist/index.js",
-        "format": "prettier . --write"
-    },
-    "dependencies": {
-        "prettier": "^3.8.4",
-        "typescript": "^6.0.3"
-    }
+  "name": "codeit-business-ts",
+  "scripts": {
+    "start": "npx tsc && node ./dist/index.js",
+    "format": "prettier . --write"
+  },
+  "dependencies": {
+    "prettier": "^3.8.4",
+    "typescript": "^6.0.3"
+  }
 }
