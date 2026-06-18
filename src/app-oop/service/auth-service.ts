@@ -1,4 +1,4 @@
-import { UserRepo } from "../repo/file/user-repo";
+import { IUserRepo } from "./user-repo.interface";
 
 export type UserDataType = {
   email: string;
@@ -7,9 +7,9 @@ export type UserDataType = {
 };
 
 export class AuthService {
-  private _userRepo: UserRepo;
+  private _userRepo: IUserRepo;
 
-  constructor(userRepo: UserRepo) {
+  constructor(userRepo: IUserRepo) {
     this._userRepo = userRepo;
   }
 

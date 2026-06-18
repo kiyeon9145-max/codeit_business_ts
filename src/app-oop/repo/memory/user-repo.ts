@@ -1,7 +1,8 @@
 import { database } from "../../database/database";
 import { User } from "../../domain/user";
+import { IUserRepo } from "../../service/user-repo.interface";
 
-export class UserRepo {
+export class UserRepo implements IUserRepo {
   loadUsers(): User[] {
     return database.users.map(
       (user) => new User(user.email, user.password, user.username),

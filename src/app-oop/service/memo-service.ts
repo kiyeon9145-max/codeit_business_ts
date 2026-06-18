@@ -1,13 +1,13 @@
-import { MemoRepo } from "../repo/file/memo-repo";
-import { UserRepo } from "../repo/file/user-repo";
+import { IMemoRepo } from "./memo-repo.interface";
+import { IUserRepo } from "./user-repo.interface";
 
 type MemoDataType = { email: string; title: string; content: string };
 
 export class MemoService {
-  private _userRepo: UserRepo;
-  private _memoRepo: MemoRepo;
+  private _userRepo: IUserRepo;
+  private _memoRepo: IMemoRepo;
 
-  constructor(userRepo: UserRepo, memoRepo: MemoRepo) {
+  constructor(userRepo: IUserRepo, memoRepo: IMemoRepo) {
     this._userRepo = userRepo;
     this._memoRepo = memoRepo;
   }

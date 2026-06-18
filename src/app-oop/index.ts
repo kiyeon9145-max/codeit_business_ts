@@ -1,4 +1,4 @@
-import { Injector } from "./injector.js";
+import { Injector } from "./injector";
 
 const injector = new Injector();
 const rootScreen = injector.inject();
