@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메모장</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="signin-view" class="screen">
+        <h1>로그인</h1>
+        <div class="input-group">
+          <label for="email">이메일</label>
+          <input type="email" id="email" placeholder="이메일을 입력하세요" />
+        </div>
+        <div class="input-group">
+          <label for="password">비밀번호</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="비밀번호를 입력하세요"
+          />
+        </div>
+        <button id="signin-btn">로그인</button>
+        <button id="goto-signup-btn">회원가입</button>
+      </div>
+
+      <div id="signup-view" class="screen">
+        <h1>회원가입</h1>
+        <div class="input-group">
+          <label for="new-email">이메일</label>
+          <input type="email" id="new-email" placeholder="이메일을 입력하세요" />
+        </div>
+        <div class="input-group">
+          <label for="password">비밀번호</label>
+          <input
+            type="password"
+            id="new-password"
+            placeholder="비밀번호를 입력하세요" />
+            <div class="input-group">
+              <label for="new-username">이름</label>
+              <input type="text" id="new-username" placeholder="이름을 입력하세요" />
+            </div>
+        <button id="signup-btn">가입확인</button>
+        <button id="goto-signin-btn">뒤로가기</button>
+      </div>
+
+      <div id="memo-view" class="screen">
+        <h1 id="gretting-message"></h1>
+        유저 이름이 포함된 안내 메시지
+
+        메모 제목 입력 화면
+        메모 내용 입력 화면
+
+        메모 작성하기 버튼
+        메모 불러오기 버튼
+        로그아웃 버튼
+
+        메모 목록 여러개
+      </div>
+    </div>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
