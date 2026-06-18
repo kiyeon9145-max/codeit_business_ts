@@ -1,12 +1,14 @@
-import { prompt } from "../../util.js";
+import { AuthService } from "../../service/auth-service.js";
+
+
 
 export class AuthScreen {
   // 인스턴스 속성(변수)
-  #authService;
+  private authService: AuthService;
 
   // 메소드(함수)
-  constructor(authService) {
-    this.#authService = authService;
+  constructor(authService: AuthService) {
+    this.authService = authService;
   }
 
   showAuthUI() {
@@ -26,7 +28,7 @@ export class AuthScreen {
       return;
     }
 
-    const user = this.#authService.signIn(inputEmail, inputPassword);
+    const user = this.authService.signIn(inputEmail, inputPassword);
     if (user === null) {
       console.log("이메일 또는 비밀번호가 일치하지 않습니다.\n");
       return;
@@ -58,7 +60,7 @@ export class AuthScreen {
       return;
     }
 
-    const isSignedUp = this.#authService.signUp(
+    const isSignedUp = this.authService.signUp(
       inputEmail,
       inputPassword,
       inputUsername,

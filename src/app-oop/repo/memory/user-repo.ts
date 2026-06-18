@@ -3,7 +3,7 @@ import { User } from "../../domain/user.js";
 
 export class UserRepo {
   loadUsers() {
-    const users = [];
+    const users: User[] = [];
 
     for (let i = 0; i < database.users.length; i = i + 1) {
       const user = new User(
@@ -17,7 +17,7 @@ export class UserRepo {
     return users;
   }
 
-  createUser(email, password, username) {
+  createUser(email: string, password: string, username: string) {
     const newUser = {
       email: email,
       password: password,
@@ -26,7 +26,7 @@ export class UserRepo {
     database.users.push(newUser);
   }
 
-  findUserByEmail(email) {
+  findUserByEmail(email: string): User | null {
     for (let i = 0; i < database.users.length; i = i + 1) {
       if (database.users[i].email === email) {
         return new User(

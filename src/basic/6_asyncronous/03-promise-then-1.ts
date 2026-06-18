@@ -6,7 +6,7 @@
  * - 프로미스 컨테이너 내부의 값이 결정이 안되어 있다면, 결정되기를 기다렸다가, js 엔진에 의해서 콜백 큐에 등록됩니다.
  * 이벤트 루프에 의해서 콜백 큐에 등록된 콜백 함수가 콜 스택에서 실행됩니다.
  */
-const p1 = new Promise((resolve, reject) => {
+const p1: Promise<number> = new Promise((resolve, reject) => {
   resolve(1);
 });
 console.log(p1);
@@ -14,7 +14,7 @@ p1.then((v) => {
   console.log(v);
 });
 
-const p2 = new Promise((resolve, reject) => {
+const p2: Promise<number> = new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve(10);
   }, 1000);

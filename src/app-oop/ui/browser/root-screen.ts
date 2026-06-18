@@ -1,13 +1,18 @@
+import { AuthScreen } from "./auth-screen";
+import { MemoScreen } from "./memo-screen";
+
 export class RootScreen {
   // 속성
-  #authScreen;
-  #memoScreen;
-  #screenIds;
+  private authScreen: AuthScreen;
+  private memoScreen: MemoScreen;
+  private screenIds: screenIds;
 
-  constructor(authScreen, memoScreen) {
-    this.#authScreen = authScreen;
-    this.#memoScreen = memoScreen;
-    this.#screenIds = ["signin-view", "signup-view", "memo-view"];
+type ScreenId = "sign"
+
+  constructor(authScreen: AuthScreen, memoScreen: MemoScreen) {
+    this.authScreen = authScreen;
+    this.memoScreen = memoScreen;
+    this.screenIds = ["signin-view", "signup-view", "memo-view"];
   }
 
   run() {
@@ -24,26 +29,26 @@ export class RootScreen {
       if (me !== null) {
         alert("로그인 성공");
         
-        this.#memoScreen.setMe(me);
+        this.memoScreen.setMe(me);
         this.showScreen("memo-view");
-        this.#memoScreen.showGrettingMessage();
+        this.memoScreen.showGrettingMessage();
       }
     });
     document.getElementById("signup-btn").addEventListener("click", () => {
       console.log("회원 가입 버튼을 눌렀다!!!");
-      this.#authScreen.signUp();
+      this.authScreen.signUp();
     });
 
     // 화면 오픈
     this.showScreen("signin-view");
   }
 
-  showScreen(screenId) {
-    for (let i = 0; i < this.#screenIds.length; i++) {
-      if (this.#screenIds[i] === screenId) {
-        document.getElementById(this.#screenIds[i]).classList.add("active");
+  showScreen(screenId: screenIds) {
+    for (let i = 0; i < this.screenIds.length; i++) {
+      if (this.screenIds[i] === screenId) {
+        document.getElementById(this.screenIds[i]).classList.add("active");
       } else {
-        document.getElementById(this.#screenIds[i]).classList.remove("active");
+        document.getElementById(this.screenIds[i]).classList.remove("active");
       }
     }
   }

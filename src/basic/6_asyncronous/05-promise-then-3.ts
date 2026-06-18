@@ -1,4 +1,4 @@
-const buyIngredient = (ingredient) => {
+const buyIngredient = (ingredient: string): Promise<string> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(ingredient);

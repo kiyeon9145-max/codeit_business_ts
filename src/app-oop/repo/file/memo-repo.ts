@@ -27,7 +27,7 @@ export class MemoRepo {
     }
     return memos;
   }
-  createMemo(email, title, content) {
+  createMemo(email: string, title: string, content: string) {
     fs.appendFileSync(this.filePath, `${email}, ${title}, ${content}\n`);
   }
 }

@@ -11,7 +11,7 @@
 // .then((v) => {console.log(v); return 3})
 // .catch((err) => {console.log(err)});
 
-const p2 = new Promise((resolve, reject) => {
+const p2:Promise<number> = new Promise((resolve, reject) => {
   console.log("시작");
   setTimeout(() => {
     resolve(1);
@@ -22,7 +22,7 @@ p2.then((v) => {
   // 그냥 2를 리턴
   return 2;
 })
-  .then((v) => {
+  .then((v): Promise<number> => {
     console.log(v);
     // 1초 뒤에 3이 될 상자를 리턴
     return new Promise((resolve, reject) => {

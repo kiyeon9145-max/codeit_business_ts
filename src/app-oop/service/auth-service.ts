@@ -1,14 +1,16 @@
+import { UserRepo } from "../repo/file/user-repo";
+
 export class AuthService {
   // 속성
-  #userRepo;
+  private userRepo: UserRepo;
 
   // 메소드
-  constructor(userRepo) {
-    this.#userRepo = userRepo;
+  constructor(userRepo: UserRepo) {
+    this.userRepo = userRepo;
   }
 
-  signIn(inputEmail, inputPassword) {
-    const users = this.#userRepo.loadUsers();
+  signIn(inputEmail: string, inputPassword: string) {
+    const users = this.userRepo.loadUsers();
 
     for (let i = 0; i < users.length; i = i + 1) {
       if (
@@ -26,15 +28,15 @@ export class AuthService {
     return null;
   }
 
-  signUp(inputEmail, inputPassword, inputUsername) {
-    const users = this.#userRepo.loadUsers();
+  signUp(inputEmail: string, inputPassword: string, inputUsername: string) {
+    const users = this.userRepo.loadUsers();
     for (let i = 0; i < users.length; i = i + 1) {
       if (users[i].getEmail() === inputEmail) {
         return false;
       }
     }
 
-    this.#userRepo.createUser(inputEmail, inputPassword, inputUsername);
+    this.userRepo.createUser(inputEmail, inputPassword, inputUsername);
     return true;
   }
 }

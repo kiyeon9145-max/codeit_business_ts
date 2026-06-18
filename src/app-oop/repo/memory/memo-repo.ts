@@ -15,7 +15,7 @@ export class MemoRepo {
     return memos;
     // map 함수를 사용해서 가독성이 좋게 고쳐보자.
   }
-  createMemo(email, title, content) {
+  createMemo(email: string, title: string, content: string) {
     database.memos.push({ email: email, title: title, content: content });
   }
 }
