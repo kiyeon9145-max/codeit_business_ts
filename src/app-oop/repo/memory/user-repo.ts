@@ -2,7 +2,7 @@ import { database } from "../../database/database";
 import { User } from "../../domain/user";
 
 export class UserRepo {
-  loadUsers() {
+  loadUsers(): User[] {
     return database.users.map(
       (user) => new User(user.email, user.password, user.username),
     );
