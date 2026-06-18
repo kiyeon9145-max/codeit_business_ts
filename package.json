@@ -5,6 +5,7 @@
     "format": "prettier . --write"
   },
   "dependencies": {
+    "@types/node": "^25.9.3",
     "prettier": "^3.8.4",
     "typescript": "^6.0.3"
   }
