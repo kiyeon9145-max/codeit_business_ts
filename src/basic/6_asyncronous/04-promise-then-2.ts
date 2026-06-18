@@ -11,7 +11,7 @@
 // .then((v) => {console.log(v); return 3})
 // .catch((err) => {console.log(err)});
 
-const p2:Promise<number> = new Promise((resolve, reject) => {
+const p2: Promise<number> = new Promise((resolve, reject) => {
   console.log("시작");
   setTimeout(() => {
     resolve(1);

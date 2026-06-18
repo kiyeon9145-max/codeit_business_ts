@@ -1,7 +1,5 @@
 import { AuthService } from "../../service/auth-service.js";
 
-
-
 export class AuthScreen {
   // 인스턴스 속성(변수)
   private authService: AuthService;

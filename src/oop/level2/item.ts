@@ -1,3 +1,1 @@
-export class Item {
-    
-}
+export class Item {}

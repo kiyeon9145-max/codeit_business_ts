@@ -14,7 +14,9 @@ export class AuthScreen {
       return;
     }
 
-    const inputPassword = document.getElementById("password")as HTMLInputElement;
+    const inputPassword = document.getElementById(
+      "password",
+    ) as HTMLInputElement;
     if (inputPassword.value.length < 4) {
       alert("비밀번호는 최소 4자 이상입니다.");
       return;
@@ -30,19 +32,23 @@ export class AuthScreen {
   }
 
   signUp() {
-    const inputEmail = document.getElementById("new-email")as HTMLInputElement;
+    const inputEmail = document.getElementById("new-email") as HTMLInputElement;
     if (inputEmail.value.includes("@") === false) {
       alert("올바른 이메일 형식이 아닙니다.");
       return;
     }
 
-    const inputPassword = document.getElementById("new-password")as HTMLInputElement;
+    const inputPassword = document.getElementById(
+      "new-password",
+    ) as HTMLInputElement;
     if (inputPassword.value.length < 4) {
       alert("비밀번호는 최소 4자 이상입니다.");
       return;
     }
 
-    const inputUsername = document.getElementById("new-username")as HTMLInputElement;
+    const inputUsername = document.getElementById(
+      "new-username",
+    ) as HTMLInputElement;
     if (inputUsername.value.length < 1) {
       alert("이름은 최소 1자 이상입니다.");
       return;
@@ -59,8 +65,8 @@ export class AuthScreen {
     }
 
     alert("회원 가입에 성공했어요.");
-    (document.getElementById("new-email")as HTMLInputElement).value = "";
-    (document.getElementById("new-password")as HTMLInputElement).value = "";
-    (document.getElementById("new-username")as HTMLInputElement).value = "";
+    (document.getElementById("new-email") as HTMLInputElement).value = "";
+    (document.getElementById("new-password") as HTMLInputElement).value = "";
+    (document.getElementById("new-username") as HTMLInputElement).value = "";
   }
 }
