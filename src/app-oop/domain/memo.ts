@@ -1,25 +1,30 @@
 export class Memo {
   // 속성
-  private email: string;
-  private title: string;
-  private content: string;
+  private _email: string;
+  private _title: string;
+  private _content: string;
 
   // 메소드
   constructor(email: string, title: string, content: string) {
-    this.email = email;
-    this.title = title;
-    this.content = content;
+    this._email = email;
+    this._title = title;
+    this._content = content;
   }
 
-  getTitle() {
-    return this.title;
+  get Title() {
+    return this._title;
   }
 
-  getContent() {
-    return this.content;
+  get Content() {
+    return this._content;
   }
 
-  getEmail() {
-    return this.email;
+  get Email() {
+    return this._email;
+  }
+
+  isContentValidate(): boolean {
+    // "바보"라는 단어가 내용에 들어가면 false를 리턴하는 함수
+    return this._content.includes("바보");
   }
 }

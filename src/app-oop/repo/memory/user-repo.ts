@@ -1,42 +1,21 @@
-import { database } from "../../database/database.js";
-import { User } from "../../domain/user.js";
+import { database } from "../../database/database";
+import { User } from "../../domain/user";
 
 export class UserRepo {
   loadUsers() {
-    const users: User[] = [];
-
-    for (let i = 0; i < database.users.length; i = i + 1) {
-      const user = new User(
-        database.users[i].email,
-        database.users[i].password,
-        database.users[i].username,
-      );
-      users.push(user);
-    }
-
-    return users;
+    return database.users.map(
+      (user) => new User(user.email, user.password, user.username),
+    );
   }
 
   createUser(email: string, password: string, username: string) {
-    const newUser = {
-      email: email,
-      password: password,
-      username: username,
-    };
-    database.users.push(newUser);
+    database.users.push({ email, password, username });
   }
 
   findUserByEmail(email: string): User | null {
-    for (let i = 0; i < database.users.length; i = i + 1) {
-      if (database.users[i].email === email) {
-        return new User(
-          database.users[i].email,
-          database.users[i].password,
-          database.users[i].username,
-        );
-      }
-    }
-
-    return null;
+    const foundUser = database.users.find((user) => user.email === email);
+    return foundUser !== undefined
+      ? new User(foundUser.email, foundUser.password, foundUser.username)
+      : null;
   }
 }

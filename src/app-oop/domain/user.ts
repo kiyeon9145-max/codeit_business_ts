@@ -22,8 +22,7 @@ export class User {
   }
 
   isCredentialValidate(credential: string): boolean {
-    const email = credential.split("-")[0];
-    const password = credential.split("-")[1];  
+    const [email, password] = credential.split("-");
     return this._email === email && this._password === password;
   }
 }
