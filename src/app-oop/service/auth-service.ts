@@ -1,43 +1,48 @@
 import { UserRepo } from "../repo/file/user-repo";
 
+export type UserDataType = {
+  email: string;
+  username: string;
+  credential: string;
+};
+
 export class AuthService {
-  // 속성
-  private userRepo: UserRepo;
+  private _userRepo: UserRepo;
 
-  // 메소드
   constructor(userRepo: UserRepo) {
-    this.userRepo = userRepo;
+    this._userRepo = userRepo;
   }
 
-  signIn(inputEmail: string, inputPassword: string) {
-    const users = this.userRepo.loadUsers();
+  signIn(inputEmail: string, inputPassword: string): UserDataType | null {
+    const foundUser = this._userRepo.findUserByEmail(inputEmail);
 
-    for (let i = 0; i < users.length; i = i + 1) {
-      if (
-        users[i].getEmail() === inputEmail &&
-        users[i].getPassword() === inputPassword
-      ) {
-        return {
-          email: users[i].getEmail(),
-
-          username: users[i].getUsername(),
-          credential: `${users[i].getEmail()}-${users[i].getPassword()}`,
-        };
-      }
+    if (foundUser === null) {
+      return null;
     }
 
-    return null;
+    if (foundUser.password !== inputPassword) {
+      return null;
+    }
+
+    return {
+      email: foundUser.email,
+      username: foundUser.username,
+      credential: `${foundUser.email}-${foundUser.password}`,
+    };
   }
 
-  signUp(inputEmail: string, inputPassword: string, inputUsername: string) {
-    const users = this.userRepo.loadUsers();
-    for (let i = 0; i < users.length; i = i + 1) {
-      if (users[i].getEmail() === inputEmail) {
-        return false;
-      }
+  signUp(
+    inputEmail: string,
+    inputPassword: string,
+    inputUsername: string,
+  ): boolean {
+    const foundUser = this._userRepo.findUserByEmail(inputEmail);
+
+    if (foundUser !== null) {
+      return false;
     }
 
-    this.userRepo.createUser(inputEmail, inputPassword, inputUsername);
+    this._userRepo.createUser(inputEmail, inputPassword, inputUsername);
     return true;
   }
 }

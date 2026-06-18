@@ -1,48 +1,48 @@
 import { MemoRepo } from "../repo/file/memo-repo";
 import { UserRepo } from "../repo/file/user-repo";
 
-export class MemoService {
-  // 속성
-  private memoRepo: MemoRepo;
-  private userRepo: UserRepo;
+type MemoDataType = { email: string; title: string; content: string };
 
-  // 메소드
+export class MemoService {
+  private _userRepo: UserRepo;
+  private _memoRepo: MemoRepo;
+
   constructor(userRepo: UserRepo, memoRepo: MemoRepo) {
-    this.userRepo = userRepo;
-    this.memoRepo = memoRepo;
+    this._userRepo = userRepo;
+    this._memoRepo = memoRepo;
   }
 
-  getMyMemos(credential: any) {
+  getMyMemos(credential: string): MemoDataType[] {
     const email = credential.split("-")[0];
-    const foundUser = this.userRepo.findUserByEmail(email);
+    const foundUser = this._userRepo.findUserByEmail(email);
+
+    if (foundUser === null) {
+      return [];
+    }
     if (foundUser.isCredentialValidate(credential) === false) {
       return [];
     }
 
-    const myMemos = [];
-    const memos = this.memoRepo.loadMemos();
-
-    for (let i = 0; i < memos.length; i = i + 1) {
-      if (memos[i].getEmail() === email) {
-        myMemos.push({
-          email: memos[i].getEmail(),
-          title: memos[i].getTitle(),
-          content: memos[i].getContent(),
-        });
-      }
-    }
-
-    return myMemos;
+    const memos = this._memoRepo.loadMemos();
+    return memos
+      .filter((memo) => memo.email === email)
+      .map((memo) => {
+        return { email: memo.email, title: memo.title, content: memo.content };
+      });
   }
 
-  createMemo(credential: any, title: string, content: string) {
+  createMemo(credential: string, title: string, content: string): boolean {
     const email = credential.split("-")[0];
-    const foundUser = this.userRepo.findUserByEmail(email);
+    const foundUser = this._userRepo.findUserByEmail(email);
+
+    if (foundUser === null) {
+      return false;
+    }
     if (foundUser.isCredentialValidate(credential) === false) {
       return false;
     }
 
-    this.memoRepo.createMemo(email, title, content);
+    this._memoRepo.createMemo(email, title, content);
     return true;
   }
 }
