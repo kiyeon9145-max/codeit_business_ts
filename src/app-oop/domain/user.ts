@@ -1,34 +1,29 @@
 export class User {
   // 속성
-  private email: string;
-  private password: string;
-  private username: string;
+  private _email: string;
+  private _password: string;
+  private _username: string;
 
   // 메소드
   constructor(email: string, password: string, username: string) {
-    this.email = email;
-    this.password = password;
-    this.username = username;
+    this._email = email;
+    this._password = password;
+    this._username = username;
   }
 
-  getEmail() {
-    return this.email;
+  get email() {
+    return this._email;
   }
-  getPassword() {
-    return this.password;
+  get password() {
+    return this._password;
   }
-  getUsername() {
-    return this.username;
+  get username() {
+    return this._username;
   }
 
-  isCredentialValidate(credential: any) {
+  isCredentialValidate(credential: string): boolean {
     const email = credential.split("-")[0];
-    const password = credential.split("-")[1];
-
-    if (this.email === email && this.password === password) {
-      return true;
-    } else {
-      return false;
-    }
+    const password = credential.split("-")[1];  
+    return this._email === email && this._password === password;
   }
 }

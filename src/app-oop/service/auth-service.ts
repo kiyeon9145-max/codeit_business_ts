@@ -19,6 +19,7 @@ export class AuthService {
       ) {
         return {
           email: users[i].getEmail(),
+          
           username: users[i].getUsername(),
           credential: `${users[i].getEmail()}-${users[i].getPassword()}`,
         };
