@@ -1,6 +1,6 @@
 import { database } from "../../database/database";
 import { User } from "../../domain/user";
-import { IUserRepo } from "../../service/user-repo.interface";
+import { IUserRepo } from "../../service/ports/user-repo.interface";
 
 export class UserRepo implements IUserRepo {
   loadUsers(): User[] {

@@ -1,17 +1,17 @@
 import fs from "node:fs";
 import { User } from "../../domain/user";
-import { IUserRepo } from "../../service/user-repo.interface";
+import { IUserRepo } from "../../service/ports/user-repo.interface";
 
 export class UserRepo implements IUserRepo {
-  filePath;
+  private _filePath;
 
   constructor() {
-    this.filePath =
+    this._filePath =
       "/Users/wiz/codeit-business-1/src/app-oop/database/users.txt";
   }
 
   readFile() {
-    const result = fs.readFileSync(this.filePath);
+    const result = fs.readFileSync(this._filePath);
     return String(result).trim().split("\n");
   }
 
@@ -29,13 +29,13 @@ export class UserRepo implements IUserRepo {
     return users;
   }
 
-  createUser(email, password, username) {
-    fs.appendFileSync(this.filePath, `${email}, ${password}, ${username}\n`);
+  createUser(email: string, password: string, username: string) {
+    fs.appendFileSync(this._filePath, `${email}, ${password}, ${username}\n`);
   }
 
-  findUserByEmail(email) {
+  findUserByEmail(email: string): User | null {
     const users = this.loadUsers();
-    const foundUser = users.find((v) => v.getEmail() === email);
+    const foundUser = users.find((v) => v.email === email);
     return foundUser !== undefined ? foundUser : null;
   }
 }

@@ -1,4 +1,4 @@
-import { IUserRepo } from "./user-repo.interface";
+import { IUserRepo } from "./ports/user-repo.interface";
 
 export type UserDataType = {
   email: string;

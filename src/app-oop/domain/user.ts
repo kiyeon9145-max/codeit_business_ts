@@ -1,10 +1,8 @@
 export class User {
-  // 속성
   private _email: string;
   private _password: string;
   private _username: string;
 
-  // 메소드
   constructor(email: string, password: string, username: string) {
     this._email = email;
     this._password = password;

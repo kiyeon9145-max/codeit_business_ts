@@ -1,17 +1,17 @@
 import fs from "node:fs";
 import { Memo } from "../../domain/memo.js";
-import { IMemoRepo } from "../../service/memo-repo.interface.js";
+import { IMemoRepo } from "../../service/ports/memo-repo.interface.js";
 
 export class MemoRepo implements IMemoRepo {
-  filePath;
+  private _filePath;
 
   constructor() {
-    this.filePath =
+    this._filePath =
       "/Users/apple/Desktop/codeit-cursur/src/app-oop/database/memos.txt";
   }
 
   readFile() {
-    const result = fs.readFileSync(this.filePath);
+    const result = fs.readFileSync(this._filePath);
     return String(result).trim().split("\n");
   }
 
@@ -29,6 +29,6 @@ export class MemoRepo implements IMemoRepo {
     return memos;
   }
   createMemo(email: string, title: string, content: string) {
-    fs.appendFileSync(this.filePath, `${email}, ${title}, ${content}\n`);
+    fs.appendFileSync(this._filePath, `${email}, ${title}, ${content}\n`);
   }
 }

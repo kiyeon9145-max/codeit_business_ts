@@ -1,5 +1,5 @@
-import { IMemoRepo } from "./memo-repo.interface";
-import { IUserRepo } from "./user-repo.interface";
+import { IMemoRepo } from "./ports/memo-repo.interface";
+import { IUserRepo } from "./ports/user-repo.interface";
 
 type MemoDataType = { email: string; title: string; content: string };
 

@@ -7,13 +7,13 @@ import { MemoRepo } from "./repo/file/memo-repo";
 import { AuthService } from "./service/auth-service";
 import { MemoService } from "./service/memo-service";
 
-// import { AuthScreen } from "./ui/console/auth-screen";
-// import { MemoScreen } from "./ui/console/memo-screen";
-// import { RootScreen } from "./ui/console/root-screen";
+import { AuthScreen } from "./ui/console/auth-screen";
+import { MemoScreen } from "./ui/console/memo-screen";
+import { RootScreen } from "./ui/console/root-screen";
 
-import { AuthScreen } from "./ui/browser/auth-screen";
-import { MemoScreen } from "./ui/browser/memo-screen";
-import { RootScreen } from "./ui/browser/root-screen";
+// import { AuthScreen } from "./ui/browser/auth-screen";
+// import { MemoScreen } from "./ui/browser/memo-screen";
+// import { RootScreen } from "./ui/browser/root-screen";
 
 export class Injector {
   inject() {

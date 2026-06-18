@@ -1,6 +1,6 @@
 import { database } from "../../database/database";
 import { Memo } from "../../domain/memo";
-import { IMemoRepo } from "../../service/memo-repo.interface";
+import { IMemoRepo } from "../../service/ports/memo-repo.interface";
 
 export class MemoRepo implements IMemoRepo {
   loadMemos(): Memo[] {
