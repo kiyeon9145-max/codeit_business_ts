@@ -17,7 +17,7 @@ const job1 = () => {
     console.log("유저1 파스타 여기있습니다. 맛있게 드세요");
   }, 5000);
 };
-// job1();
+job1();
 
 // 콜백 헬
 const makePasta = () => {
@@ -42,4 +42,4 @@ const makePasta = () => {
   }, 3000);
 };
 
-makePasta();
+// makePasta();

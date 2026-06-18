@@ -1,11 +1,11 @@
 // 값
-const x = 1;
+const x: number = 1;
 console.log(x);
 
 // 프로미스는 값을 담은 컨테이너입니다.
 // 대기중, 완료, 에러 3가지 상태를 가질 수 있습니다.
 // 프로미스 컨테이너 내부의 값을 지금 즉시 1로 결정해봅시다.
-const p1 = new Promise((resolve, reject) => {
+const p1: Promise<unknown> = new Promise((resolve, reject) => {
   resolve(1);
 });
 console.log(p1);

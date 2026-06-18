@@ -1,5 +1,5 @@
 import { users } from "./2_ref_value.js";
-import { printProfile } from "./4_function.js";
+import { printProfile } from "../4_function/1";
 
 // 반복문
 
