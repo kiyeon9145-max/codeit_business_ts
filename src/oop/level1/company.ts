@@ -1,7 +1,6 @@
 import { Designer } from "./designer";
 import { Developer } from "./developer";
 
-
 export class Company {
   developers: Developer[];
   designers: Designer[];

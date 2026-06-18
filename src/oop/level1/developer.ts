@@ -1,6 +1,5 @@
 import { Designer } from "./designer";
 
-
 export class Developer {
   name: string;
   code: string;
@@ -8,7 +7,7 @@ export class Developer {
 
   constructor(name: string, designer: Designer) {
     this.name = name;
-    this.code = ""
+    this.code = "";
     this.designer = designer;
   }
 
