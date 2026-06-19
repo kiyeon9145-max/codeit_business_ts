@@ -1,4 +1,5 @@
 import { userDomainType } from "../domain/user";
+import { parseCredential } from "../util";
 import { IMemoRepo } from "./ports/memo-repo.interface";
 import { IUserRepo } from "./ports/user-repo.interface";
 
@@ -14,7 +15,7 @@ export const memoService = (
   const { loadMemos, saveMemo } = memoRepo;
 
   const getMyMemos = (credential: string): MemoDataType[] => {
-    const email = credential.split("-")[0];
+    const {email} = parseCredential(credential);
     const foundUser = findUserByEmail(email);
 
     if (foundUser === null) {
@@ -32,7 +33,7 @@ export const memoService = (
       });
   };
   const createMemo = (credential: string, title: string, content: string) => {
-    const email = credential.split("-")[0];
+    const {email} = parseCredential(credential);
     const foundUser = findUserByEmail(email);
 
     if (foundUser === null) {
