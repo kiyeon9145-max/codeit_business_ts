@@ -47,6 +47,7 @@ export const rootScreen = (
       }
     }
   };
+  return { run };
 };
 
 export type RootScreenType = ReturnType<typeof rootScreen>;
