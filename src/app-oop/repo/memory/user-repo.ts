@@ -13,5 +13,4 @@ export class UserRepo implements IUserRepo {
   createUser(email: string, password: string, username: string) {
     database.users.push({ email, password, username });
   }
-
-  }
+}
