@@ -15,7 +15,7 @@ export const memoService = (
   const { loadMemos, saveMemo } = memoRepo;
 
   const getMyMemos = (credential: string): MemoDataType[] => {
-    const {email} = parseCredential(credential);
+    const { email } = parseCredential(credential);
     const foundUser = findUserByEmail(email);
 
     if (foundUser === null) {
@@ -33,7 +33,7 @@ export const memoService = (
       });
   };
   const createMemo = (credential: string, title: string, content: string) => {
-    const {email} = parseCredential(credential);
+    const { email } = parseCredential(credential);
     const foundUser = findUserByEmail(email);
 
     if (foundUser === null) {

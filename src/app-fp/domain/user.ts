@@ -16,7 +16,7 @@ export const userDomain = () => {
     return { email, password, username };
   };
   const isCredentialValidate = (user: User, credential: string): boolean => {
-    const {email, password} = parseCredential(credential);
+    const { email, password } = parseCredential(credential);
     return user.email === email && user.password === password;
   };
 

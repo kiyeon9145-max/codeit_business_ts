@@ -54,4 +54,4 @@ export const authService = (userRepo: IUserRepo) => {
   return { signIn, signUp };
 };
 
-export type UserServiceType = ReturnType<typeof authService>;
+export type AuthServiceType = ReturnType<typeof authService>;
