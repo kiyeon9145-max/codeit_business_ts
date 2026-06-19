@@ -5,14 +5,23 @@ export type User = {
 };
 
 //순수함수
-export const createUser = (
-  email: string,
-  password: string,
-  username: string,
-): User => {
-  return { email, password, username };
+export const userDomain = () => {
+  const createUser = (
+    email: string,
+    password: string,
+    username: string,
+  ): User => {
+    return { email, password, username };
+  };
+  const isCredentialValidate = (user: User, credential: string): boolean => {
+    const [email, password] = credential.split("-");
+    return user.email === email && user.password === password;
+  };
+
+  return {
+    createUser,
+    isCredentialValidate,
+  };
 };
-export const isCredentialValidate = (user: User, credential: string) => {
-  const [email, password] = credential.split("-");
-  return user.email === email && user.password === password;
-};
+
+export type userDomainType = ReturnType<typeof userDomain>;
