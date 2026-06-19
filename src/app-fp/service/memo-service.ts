@@ -3,7 +3,7 @@ import { parseCredential } from "../util";
 import { IMemoRepo } from "./ports/memo-repo.interface";
 import { IUserRepo } from "./ports/user-repo.interface";
 
-type MemoDataType = { email: string; title: string; content: string };
+export type MemoDataType = { email: string; title: string; content: string };
 
 export const memoService = (userRepo: IUserRepo, memoRepo: IMemoRepo) => {
   const { isCredentialValidate } = userDomain;
