@@ -4,7 +4,7 @@ import { User, userDomainType } from "../domain/user";
 export const userRepo = (userDomain: userDomainType) => {
   const { createUser } = userDomain;
 
-  //비순수함수
+  //순수함수
   const findUserByEmail = (email: string): User | null => {
     const foundUser = database.users.find((user) => user.email === email);
     return foundUser !== undefined
@@ -21,3 +21,5 @@ export const userRepo = (userDomain: userDomainType) => {
     saveUser,
   };
 };
+
+export type userRepoType = ReturnType<typeof userRepo>;

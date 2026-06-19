@@ -4,14 +4,16 @@ export type Memo = {
   content: string;
 };
 
-export const createMemo = (
-  email: string,
-  title: string,
-  content: string,
-): Memo => {
-  return { email, title, content };
+export const memoDomain = () => {
+  const createMemo = (email: string, title: string, content: string): Memo => {
+    return { email, title, content };
+  };
+
+  const isContentValidate = (memo: Memo): boolean => {
+    return memo.content.includes("바보");
+  };
+
+  return { createMemo, isContentValidate };
 };
 
-export const isContentValidate = (memo: Memo): boolean => {
-  return memo.content.includes("바보");
-};
+export type MemoDomainType = ReturnType<typeof memoDomain>;
