@@ -1,9 +1,9 @@
 import { database } from "../database/database";
-import { Memo, MemoDomainType } from "../domain/memo";
+import { Memo, memoDomain } from "../domain/memo";
 import { IMemoRepo } from "../service/ports/memo-repo.interface";
 
 // 비순수함수 + 불변성
-export const memoRepo = (memoDomain: MemoDomainType): IMemoRepo => {
+export const memoRepo = (): IMemoRepo => {
   const { createMemo } = memoDomain;
 
   const loadMemos = (): Memo[] => {

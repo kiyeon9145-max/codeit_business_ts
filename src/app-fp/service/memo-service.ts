@@ -1,15 +1,11 @@
-import { userDomainType } from "../domain/user";
+import { userDomain } from "../domain/user";
 import { parseCredential } from "../util";
 import { IMemoRepo } from "./ports/memo-repo.interface";
 import { IUserRepo } from "./ports/user-repo.interface";
 
 type MemoDataType = { email: string; title: string; content: string };
 
-export const memoService = (
-  userDomain: userDomainType,
-  userRepo: IUserRepo,
-  memoRepo: IMemoRepo,
-) => {
+export const memoService = (userRepo: IUserRepo, memoRepo: IMemoRepo) => {
   const { isCredentialValidate } = userDomain;
   const { findUserByEmail } = userRepo;
   const { loadMemos, saveMemo } = memoRepo;

@@ -3,6 +3,7 @@ import { prompt } from "../../util";
 
 export const memoScreen = (memoService: MemoServiceType) => {
   const { getMyMemos, createMemo } = memoService;
+
   const showMenuUI = (): string => {
     return prompt("메모 불러오기(0), 메모 작성하기(1), 로그아웃(2), 종료(q): ");
   };

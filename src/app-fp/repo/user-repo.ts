@@ -1,9 +1,9 @@
 import { database } from "../database/database";
-import { User, userDomainType } from "../domain/user";
+import { User, userDomain } from "../domain/user";
 import { IUserRepo } from "../service/ports/user-repo.interface";
 
 // 비순수함수 + 불변성
-export const userRepo = (userDomain: userDomainType): IUserRepo => {
+export const userRepo = (): IUserRepo => {
   const { createUser } = userDomain;
 
   const findUserByEmail = (email: string): User | null => {
