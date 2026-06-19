@@ -1,0 +1,3 @@
+asd@asd.com, 오늘의 일기, 노잼이었다.
+asd@asd.com, 오늘의 코딩, 어려웠다.
+qwe@qwe.com, 오늘의 공부, 포기각이다.

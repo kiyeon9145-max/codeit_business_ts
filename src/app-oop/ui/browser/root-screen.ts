@@ -28,7 +28,7 @@
 //       const me = this.#authScreen.signIn();
 //       if (me !== null) {
 //         alert("로그인 성공");
-        
+
 //         this.memoScreen.setMe(me);
 //         this.showScreen("memo-view");
 //         this.memoScreen.showGrettingMessage();
