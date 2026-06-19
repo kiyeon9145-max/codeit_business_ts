@@ -1,5 +1,6 @@
 import { AuthServiceType, UserDataType } from "../../service/auth-service";
 import { prompt } from "../../util";
+import { StateType } from "./root-screen";
 
 export const authScreen = (authService: AuthServiceType) => {
   const { signIn, signUp } = authService;
@@ -66,12 +67,18 @@ export const authScreen = (authService: AuthServiceType) => {
   const showInvalidInputUI = () => {
     console.log("잘못된 입력입니다.\n");
   };
+
+  const render = (state: StateType) => {
+    console.log("[인증 화면]");
+  };
+
   return {
     showAuthUI,
-    showInvalidInputUI,
     showSignInUI,
     showSignUpUI,
+    showInvalidInputUI,
+    render,
   };
 };
 
-export type AuthScreenType = ReturnType<typeof authScreen>;
+export type AuthSceenType = ReturnType<typeof authScreen>;

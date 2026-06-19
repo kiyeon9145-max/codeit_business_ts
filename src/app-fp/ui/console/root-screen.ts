@@ -1,6 +1,6 @@
 import { UserDataType } from "../../service/auth-service";
 import { MemoDataType } from "../../service/memo-service";
-import { AuthScreenType } from "./auth-screen";
+import { AuthSceenType } from "./auth-screen";
 import { MemoScreenType } from "./memo-screen";
 
 export type StateType = {
@@ -9,19 +9,21 @@ export type StateType = {
 };
 
 export const rootScreen = (
-  authScreen: AuthScreenType,
+  authScreen: AuthSceenType,
   memoScreen: MemoScreenType,
 ) => {
   const { showAuthUI, showInvalidInputUI, showSignInUI, showSignUpUI } =
     authScreen;
-  const { showAllMemosUI, showCreateMemoUI, showMenuUI } = memoScreen;
+  const { getAllMemos, createMemoForm, showMenuUI } = memoScreen;
 
   const main = (state: StateType) => {
     if (state.user === undefined) {
       const newState = runAuth(state);
+      authScreen.render(newState);
       return main(newState);
     } else {
       const newState = runMemo(state);
+      memoScreen.render(newState);
       return main(newState);
     }
   };
@@ -51,13 +53,13 @@ export const rootScreen = (
     console.log(`[${user.username}님의 메모장]`);
     const choice = showMenuUI();
     if (choice === "0") {
-      showAllMemosUI(user.credential);
-      return state;
+      const myMemos = getAllMemos(user.credential);
+      return { ...state, memos: myMemos };
     } else if (choice === "1") {
-      showCreateMemoUI(user.credential);
-      return state;
+      createMemoForm(user.credential);
+      return { ...state, memos: [] };
     } else if (choice === "2") {
-      return { ...state, user: undefined };
+      return { ...state, user: undefined, memos: [] };
     } else if (choice === "q") {
       process.exit(0);
     } else {
