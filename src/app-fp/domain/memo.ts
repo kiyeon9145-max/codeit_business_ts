@@ -4,6 +4,7 @@ export type Memo = {
   content: string;
 };
 
+// 순수함수 + 불변성
 export const memoDomain = () => {
   const createMemo = (email: string, title: string, content: string): Memo => {
     return { email, title, content };

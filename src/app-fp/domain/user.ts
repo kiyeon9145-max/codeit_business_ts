@@ -4,7 +4,7 @@ export type User = {
   username: string;
 };
 
-//순수함수
+// 순수함수 + 불변성
 export const userDomain = () => {
   const createUser = (
     email: string,

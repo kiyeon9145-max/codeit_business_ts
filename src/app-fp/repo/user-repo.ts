@@ -1,11 +1,13 @@
 import { database } from "../database/database";
 import { User, userDomainType } from "../domain/user";
+import { IUserRepo } from "../service/ports/user-repo.interface";
 
-export const userRepo = (userDomain: userDomainType) => {
+// 비순수함수 + 불변성
+export const userRepo = (userDomain: userDomainType): IUserRepo => {
   const { createUser } = userDomain;
 
-  //순수함수
   const findUserByEmail = (email: string): User | null => {
+    // 부수효과
     const foundUser = database.users.find((user) => user.email === email);
     return foundUser !== undefined
       ? createUser(foundUser.email, foundUser.password, foundUser.username)
@@ -13,6 +15,7 @@ export const userRepo = (userDomain: userDomainType) => {
   };
 
   const saveUser = (email: string, password: string, username: string) => {
+    // 부수효과
     database.users.push({ email, password, username });
   };
 
