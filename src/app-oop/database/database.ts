@@ -1,17 +1,17 @@
 export type UserStrogeType = {
-  email: string,
-  password: string,
+  email: string;
+  password: string;
   username: string;
-}
+};
 export type MemoStrogeType = {
-  email: string,
-  title: string,
+  email: string;
+  title: string;
   content: string;
-}
+};
 type StorageType = {
-  users: UserStrogeType [], 
-  memos: MemoStrogeType []
-}
+  users: UserStrogeType[];
+  memos: MemoStrogeType[];
+};
 const storage: StorageType = {
   users: [
     { email: "asd@asd.com", password: "1234", username: "nick" },
@@ -32,16 +32,36 @@ const delay = (delayTime: number): Promise<void> => {
   });
 };
 
-
 export const database = {
-  findOne: async (collection: "users" | "memos", email: string) => {
+  findOne: async <T>(
+    collection: "users" | "memos",
+    email: string,
+  ): Promise<T | undefined> => {
     await delay(1000);
 
     if (collection === "users") {
-      return storage.users.find((user) => user.email === email) as UserStrogeType;
+      const found = storage.users.find((user) => user.email === email);
+      return found !== undefined ? (found as T) : undefined;
     } else if (collection === "memos") {
-      return storage.memos.find((memo) => memo.email === email) as MemoStrogeType;
+      const found = storage.memos.find((memo) => memo.email === email);
+      return found !== undefined ? (found as T) : undefined;
     }
+  },
+  findMany: async <T>(
+    collection: "users" | "memos",
+    email: string,
+  ): Promise<T[]> => {
+    await delay(1000);
+
+    if (collection === "users") {
+      const users = storage.users.filter((user) => user.email === email);
+      return users as T[];
+    } else if (collection === "memos") {
+      const memos = storage.memos.filter((memo) => memo.email === email);
+      return memos as T[];
+    }
+
+    return [];
   },
   insertOne: async (collection: "users" | "memos", data: any) => {
     await delay(1000);

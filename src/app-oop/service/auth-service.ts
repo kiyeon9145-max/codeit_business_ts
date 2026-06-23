@@ -13,7 +13,10 @@ export class AuthService {
     this._userRepo = userRepo;
   }
 
-  async signIn(inputEmail: string, inputPassword: string): Promise <UserDataType | null> {
+  async signIn(
+    inputEmail: string,
+    inputPassword: string,
+  ): Promise<UserDataType | null> {
     const foundUser = await this._userRepo.findUserByEmail(inputEmail);
 
     if (foundUser === null) {
