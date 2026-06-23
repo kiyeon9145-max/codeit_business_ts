@@ -23,6 +23,12 @@ const makePasta = async () => {
   const ingredient3 = await buyIngredient("토마토 소스");
   console.log(`${ingredient3}을 구매해왔다.`);
   console.log("파스타를 완성한다!");
+
+  return "완성된 파스타";
 };
 
-makePasta();
+const run = async () => {
+  const ultimatePasta = await makePasta();
+  console.log("손님에게 서빙:" + ultimatePasta);
+};
+run();

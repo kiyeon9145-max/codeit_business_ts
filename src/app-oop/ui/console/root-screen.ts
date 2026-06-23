@@ -13,12 +13,12 @@ export class RootScreen {
     this._memoScreen = memoScreen;
   }
 
-  run() {
+  async run() {
     let me: UserDataType | undefined;
 
     while (true) {
       while (me === undefined) {
-        const choice = this._authScreen.showAuthUI();
+        const choice = await this._authScreen.showAuthUI();
         if (choice === "0") {
           me = this._authScreen.showSignInUI();
         } else if (choice === "1") {

@@ -13,8 +13,8 @@ export class AuthService {
     this._userRepo = userRepo;
   }
 
-  signIn(inputEmail: string, inputPassword: string): UserDataType | null {
-    const foundUser = this._userRepo.findUserByEmail(inputEmail);
+  async signIn(inputEmail: string, inputPassword: string): Promise <UserDataType | null> {
+    const foundUser = await this._userRepo.findUserByEmail(inputEmail);
 
     if (foundUser === null) {
       return null;
