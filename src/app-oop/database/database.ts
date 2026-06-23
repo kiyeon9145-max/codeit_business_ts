@@ -12,6 +12,7 @@ type StorageType = {
   users: UserStrogeType[];
   memos: MemoStrogeType[];
 };
+
 const storage: StorageType = {
   users: [
     { email: "asd@asd.com", password: "1234", username: "nick" },
@@ -37,7 +38,13 @@ export const database = {
     collection: "users" | "memos",
     email: string,
   ): Promise<T | undefined> => {
-    await delay(5000);
+    if (email === "t@t.com") {
+      await delay(5000); // 비정상
+      const err = new Error("Timeout akasihdb asdb ashdb ahbdsia baisdb");
+      throw err;
+    } else {
+      await delay(1000); // 정상
+    }
 
     if (collection === "users") {
       const found = storage.users.find((user) => user.email === email);
@@ -67,9 +74,9 @@ export const database = {
     await delay(5000);
 
     if (collection === "users") {
-      return storage.users.push(data);
+      storage.users.push(data);
     } else if (collection === "memos") {
-      return storage.memos.push(data);
+      storage.memos.push(data);
     }
   },
 };
