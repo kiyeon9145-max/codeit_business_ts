@@ -15,7 +15,7 @@ export class UserRepo implements IUserRepo {
     return String(result).trim().split("\n");
   }
 
-  loadUsers() {
+  async loadUsers() {
     const result = this.readFile();
     const users = [];
     for (let i = 0; i < result.length; i++) {
@@ -29,12 +29,12 @@ export class UserRepo implements IUserRepo {
     return users;
   }
 
-  createUser(email: string, password: string, username: string) {
+  async createUser(email: string, password: string, username: string) {
     fs.appendFileSync(this._filePath, `${email}, ${password}, ${username}\n`);
   }
 
-  findUserByEmail(email: string): User | null {
-    const users = this.loadUsers();
+  async findUserByEmail(email: string): Promise<User | null> {
+    const users = await this.loadUsers();
     const foundUser = users.find((v) => v.email === email);
     return foundUser !== undefined ? foundUser : null;
   }

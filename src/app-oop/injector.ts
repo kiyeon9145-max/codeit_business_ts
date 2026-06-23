@@ -1,8 +1,8 @@
-// import { UserRepo } from "./repo/memory/user-repo";
-// import { MemoRepo } from "./repo/memory/memo-repo";
+import { UserRepo } from "./repo/memory/user-repo";
+import { MemoRepo } from "./repo/memory/memo-repo";
 
-import { UserRepo } from "./repo/file/user-repo";
-import { MemoRepo } from "./repo/file/memo-repo";
+// import { UserRepo } from "./repo/file/user-repo";
+// import { MemoRepo } from "./repo/file/memo-repo";
 
 import { AuthService } from "./service/auth-service";
 import { MemoService } from "./service/memo-service";

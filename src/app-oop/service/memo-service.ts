@@ -12,9 +12,9 @@ export class MemoService {
     this._memoRepo = memoRepo;
   }
 
-  getMyMemos(credential: string): MemoDataType[] {
+  async getMyMemos(credential: string): Promise<MemoDataType[]> {
     const email = credential.split("-")[0];
-    const foundUser = this._userRepo.findUserByEmail(email);
+    const foundUser = await this._userRepo.findUserByEmail(email);
 
     if (foundUser === null) {
       return [];
@@ -23,7 +23,7 @@ export class MemoService {
       return [];
     }
 
-    const memos = this._memoRepo.loadMemos();
+    const memos = await this._memoRepo.loadMemos(email);
     return memos
       .filter((memo) => memo.email === email)
       .map((memo) => {
@@ -31,9 +31,13 @@ export class MemoService {
       });
   }
 
-  createMemo(credential: string, title: string, content: string): boolean {
+  async createMemo(
+    credential: string,
+    title: string,
+    content: string,
+  ): Promise<boolean> {
     const email = credential.split("-")[0];
-    const foundUser = this._userRepo.findUserByEmail(email);
+    const foundUser = await this._userRepo.findUserByEmail(email);
 
     if (foundUser === null) {
       return false;
@@ -42,7 +46,7 @@ export class MemoService {
       return false;
     }
 
-    this._memoRepo.createMemo(email, title, content);
+    await this._memoRepo.createMemo(email, title, content);
     return true;
   }
 }

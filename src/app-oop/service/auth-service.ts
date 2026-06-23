@@ -34,18 +34,18 @@ export class AuthService {
     };
   }
 
-  signUp(
+  async signUp(
     inputEmail: string,
     inputPassword: string,
     inputUsername: string,
-  ): boolean {
-    const foundUser = this._userRepo.findUserByEmail(inputEmail);
+  ): Promise<boolean> {
+    const foundUser = await this._userRepo.findUserByEmail(inputEmail);
 
     if (foundUser !== null) {
       return false;
     }
 
-    this._userRepo.createUser(inputEmail, inputPassword, inputUsername);
+    await this._userRepo.createUser(inputEmail, inputPassword, inputUsername);
     return true;
   }
 }

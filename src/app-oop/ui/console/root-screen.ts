@@ -18,9 +18,9 @@ export class RootScreen {
 
     while (true) {
       while (me === undefined) {
-        const choice = await this._authScreen.showAuthUI();
+        const choice = this._authScreen.showAuthUI();
         if (choice === "0") {
-          me = this._authScreen.showSignInUI();
+          me = await this._authScreen.showSignInUI();
         } else if (choice === "1") {
           this._authScreen.showSignUpUI();
         } else if (choice === "q") {
@@ -37,9 +37,9 @@ export class RootScreen {
         const choice = this._memoScreen.showMenuUI();
 
         if (choice === "0") {
-          this._memoScreen.showAllMemosUI(me.credential);
+          await this._memoScreen.showAllMemosUI(me.credential);
         } else if (choice === "1") {
-          this._memoScreen.showCreateMemoUI(me.credential);
+          await this._memoScreen.showCreateMemoUI(me.credential);
         } else if (choice === "2") {
           me = undefined;
           break;

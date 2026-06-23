@@ -15,7 +15,7 @@ export class MemoRepo implements IMemoRepo {
     return String(result).trim().split("\n");
   }
 
-  loadMemos() {
+  async loadMemos() {
     const result = this.readFile();
     const memos = [];
     for (let i = 0; i < result.length; i = i + 1) {
@@ -28,7 +28,7 @@ export class MemoRepo implements IMemoRepo {
     }
     return memos;
   }
-  createMemo(email: string, title: string, content: string) {
+  async createMemo(email: string, title: string, content: string) {
     fs.appendFileSync(this._filePath, `${email}, ${title}, ${content}\n`);
   }
 }

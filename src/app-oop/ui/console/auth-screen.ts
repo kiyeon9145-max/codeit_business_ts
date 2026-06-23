@@ -12,7 +12,7 @@ export class AuthScreen {
     return prompt("로그인(0), 회원 가입(1), 종료(q): ");
   }
 
-  showSignInUI(): UserDataType | undefined {
+  async showSignInUI(): Promise<UserDataType | undefined> {
     const inputEmail = prompt("이메일: ");
     if (inputEmail.includes("@") === false) {
       console.log("올바른 이메일 형식이 아닙니다.");
@@ -25,7 +25,7 @@ export class AuthScreen {
       return;
     }
 
-    const user = this._authService.signIn(inputEmail, inputPassword);
+    const user = await this._authService.signIn(inputEmail, inputPassword);
     if (user === null) {
       console.log("이메일 또는 비밀번호가 일치하지 않습니다.\n");
       return;
@@ -34,7 +34,7 @@ export class AuthScreen {
     return user;
   }
 
-  showSignUpUI() {
+  async showSignUpUI() {
     const inputEmail = prompt("이메일: ");
     if (inputEmail.includes("@") === false) {
       console.log("올바른 이메일 형식이 아닙니다.");
@@ -57,7 +57,7 @@ export class AuthScreen {
       return;
     }
 
-    const isSignedUp = this._authService.signUp(
+    const isSignedUp = await this._authService.signUp(
       inputEmail,
       inputPassword,
       inputUsername,

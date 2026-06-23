@@ -37,7 +37,7 @@ export const database = {
     collection: "users" | "memos",
     email: string,
   ): Promise<T | undefined> => {
-    await delay(1000);
+    await delay(5000);
 
     if (collection === "users") {
       const found = storage.users.find((user) => user.email === email);
@@ -51,7 +51,7 @@ export const database = {
     collection: "users" | "memos",
     email: string,
   ): Promise<T[]> => {
-    await delay(1000);
+    await delay(5000);
 
     if (collection === "users") {
       const users = storage.users.filter((user) => user.email === email);
@@ -64,7 +64,7 @@ export const database = {
     return [];
   },
   insertOne: async (collection: "users" | "memos", data: any) => {
-    await delay(1000);
+    await delay(5000);
 
     if (collection === "users") {
       return storage.users.push(data);

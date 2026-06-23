@@ -1,8 +1,8 @@
 {
   "name": "codeit-business-ts",
   "scripts": {
-    "dev": "npx tsc && node ./src/basic/6_exception.js",
-    "start": "npx tsc && node ./dist/basic/6_asyncronous/06-async-await.js",
+    "dev": "npx tsc && node ./dist/app-oop/index.js",
+    "start": "npx tsc && node ./dist/app-oop/database/database.js",
     "format": "prettier . --write"
   },
   "dependencies": {
